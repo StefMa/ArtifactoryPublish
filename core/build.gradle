@@ -1,0 +1,28 @@
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+compileGroovy {
+    sourceCompatibility = '1.6'
+    targetCompatibility = '1.6'
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile ('org.jfrog.buildinfo:build-info-extractor-gradle:4.4.17') {
+        exclude module: 'groovy-all'
+    }
+    compile 'guru.stefma.androidartifacts:androidartifacts:0.0.1'
+}
+
+publish {
+    userOrg = 'stefma'
+    groupId = 'guru.stefma.artifactorypublish'
+    artifactId = rootProject.name
+    uploadName = 'ArtifactoryPublish'
+    version = project.version
+    description = 'Super duper easy way to release your Android and other artifacts to artifactory'
+    website = "https://github.com/StefMa/ArtifactoryPublish"
+    licences = ['MIT']
+}
