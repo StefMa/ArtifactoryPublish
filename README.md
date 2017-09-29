@@ -26,7 +26,7 @@ buildscript {
 
 Then put these into your **module** `build.gradle`:
 ```groovy
-apply plugin: 'guru.stefma.artifactorypublish'  // Add this after your `com.android.library` or `java` plugin!
+apply plugin: 'guru.stefma.artifactorypublish' // Add this after your `com.android.library` or `java` plugin!
 
 artifactoryPublish {
     groupId = 'net.example'
