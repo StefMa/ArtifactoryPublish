@@ -13,7 +13,7 @@ dependencies {
     compile ('org.jfrog.buildinfo:build-info-extractor-gradle:4.5.2') {
         exclude module: 'groovy-all'
     }
-    compile 'guru.stefma.androidartifacts:androidartifacts:0.0.2'
+    compile 'guru.stefma.androidartifacts:androidartifacts:0.0.3'
 }
 
 publish {
