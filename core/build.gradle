@@ -15,6 +15,15 @@ apply plugin: "com.novoda.bintray-release"
 
 version = '0.0.3-SNAPSHOT'
 
+gradlePlugin {
+    plugins {
+        artifactorypublish {
+            id = "guru.stefma.artifactorypublish"
+            implementationClass = "guru.stefma.artifactorypublish.ArtifactoryPublishPlugin"
+        }
+    }
+}
+
 compileGroovy {
     sourceCompatibility = '1.6'
     targetCompatibility = '1.6'
