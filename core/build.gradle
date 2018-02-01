@@ -1,16 +1,32 @@
-apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'groovy'
-apply plugin: 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.5.0'
+    }
+}
+
+plugins {
+    id "groovy"
+    id "java-gradle-plugin"
+}
+apply plugin: "com.novoda.bintray-release"
+
+version = '0.0.3-SNAPSHOT'
 
 compileGroovy {
     sourceCompatibility = '1.6'
     targetCompatibility = '1.6'
 }
 
+repositories {
+    jcenter()
+}
+
 dependencies {
-    compile gradleApi()
     compile localGroovy()
-    compile ('org.jfrog.buildinfo:build-info-extractor-gradle:4.5.2') {
+    compile('org.jfrog.buildinfo:build-info-extractor-gradle:4.5.2') {
         exclude module: 'groovy-all'
     }
     compile 'guru.stefma.androidartifacts:androidartifacts:0.0.3'
