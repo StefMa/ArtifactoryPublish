@@ -1,6 +1,7 @@
 package guru.stefma.artifactorypublish
 
 import com.novoda.gradle.release.PublishExtension
+import com.novoda.gradle.release.ReleasePlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jfrog.gradle.plugin.artifactory.ArtifactoryPlugin
@@ -17,18 +18,15 @@ class ArtifactoryPublishPlugin implements Plugin<Project> {
         def extension = project.extensions.create('artifactoryPublish', ArtifactoryPublishExtension.class)
 
         // Apply bintray-release (which will create the PublishRelease extension internal)
-        project.apply([plugin: 'com.novoda.bintray-release'])
+        project.plugins.apply(ReleasePlugin.class)
 
-        // TODO: Do we need that? Either this or project.apply isn't needed...
-        new ArtifactoryPlugin().apply(project)
+        // Apply the artifactory plugin
+        project.plugins.apply(ArtifactoryPlugin.class)
 
         project.afterEvaluate {
             // Setup the PublishRelease extension based on the ArtifactoryPublish extension.
             def publishExtension = project.extensions.findByName("publish") as PublishExtension
             extension.copyPropertiesTo(publishExtension)
-
-            // TODO: Do we need that? Either this or new ArtifactoryPlugin isn't needed...
-            project.apply([plugin: 'com.jfrog.artifactory'])
 
             // Configure the artifactory closure with our extension
             new ArtifactoryPublishConfiguration(extension).configure(project)
