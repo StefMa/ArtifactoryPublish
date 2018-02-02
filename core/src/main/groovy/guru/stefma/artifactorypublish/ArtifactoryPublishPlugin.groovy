@@ -17,9 +17,6 @@ class ArtifactoryPublishPlugin implements Plugin<Project> {
         // Create our own extension which can be setup
         def extension = project.extensions.create('artifactoryPublish', ArtifactoryPublishExtension.class)
 
-        // Apply bintray-release (which will create the PublishRelease extension internal)
-        project.plugins.apply(ReleasePlugin.class)
-
         // Apply the artifactory plugin
         project.plugins.apply(ArtifactoryPlugin.class)
 
@@ -31,6 +28,11 @@ class ArtifactoryPublishPlugin implements Plugin<Project> {
             // Configure the artifactory closure with our extension
             new ArtifactoryPublishConfiguration(extension).configure(project)
         }
+
+        // Apply bintray-release (which will create the PublishRelease extension internal)
+        // Have to applied *after* our evaluation listener otherwise its own evaluation listener
+        // will run before ours which leads to crashes...
+        project.plugins.apply(ReleasePlugin.class)
     }
 
 }
