@@ -29,25 +29,25 @@ class ArtifactoryPublishExtension extends PublishExtension {
     void copyPropertiesTo(PublishExtension publishExtension) {
         // TODO: Split into required properties and optional one
         publishExtension.with {
-            it.publishVersion = publishVersion
-            it.dryRun = dryRun
-            it.bintrayKey = bintrayKey
-            it.bintrayUser = bintrayUser
-            it.artifactId = artifactId
-            it.autoPublish = autoPublish
-            it.desc = desc
-            it.description = description
-            it.groupId = groupId
-            it.issueTracker = issueTracker
-            it.licences = licences
-            it.publications = publications
-            it.repoName = repoName
-            it.version = version
-            it.repository = repository
-            it.uploadName = uploadName
-            it.userOrg = userOrg
-            it.versionAttributes = versionAttributes
-            it.website = website
+            publishVersion = this.publishVersion
+            dryRun = this.dryRun
+            bintrayKey = this.bintrayKey
+            bintrayUser = this.bintrayUser
+            artifactId = this.artifactId
+            autoPublish = this.autoPublish
+            desc = this.desc
+            description = this.description
+            groupId = this.groupId
+            issueTracker = this.issueTracker
+            licences = this.licences
+            publications = this.publications
+            repoName = this.repoName
+            version = this.version
+            repository = this.repository
+            uploadName = this.uploadName
+            userOrg = this.userOrg
+            versionAttributes = this.versionAttributes
+            website = this.website
         }
     }
 
