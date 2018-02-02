@@ -35,7 +35,9 @@ repositories {
 
 dependencies {
     compile localGroovy()
-    compile("org.jfrog.buildinfo:build-info-extractor-gradle:4.5.2") {
+    // TODO: We run into this issue: https://github.com/JFrogDev/build-info/issues/122#issuecomment-308383928
+    // Can't be resolved in a good way. Update me later ...
+    compile("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
         exclude module: "groovy-all"
     }
     compile "com.novoda:bintray-release:0.8.0"
