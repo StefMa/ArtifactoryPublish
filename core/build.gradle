@@ -1,28 +1,55 @@
-apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'groovy'
-apply plugin: 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.8.0'
+    }
+}
+
+plugins {
+    id "groovy"
+    id "java-gradle-plugin"
+}
+apply plugin: "com.novoda.bintray-release"
+
+version = "0.0.3-SNAPSHOT"
+
+gradlePlugin {
+    plugins {
+        artifactorypublish {
+            id = "guru.stefma.artifactorypublish"
+            implementationClass = "guru.stefma.artifactorypublish.ArtifactoryPublishPlugin"
+        }
+    }
+}
 
 compileGroovy {
-    sourceCompatibility = '1.6'
-    targetCompatibility = '1.6'
+    sourceCompatibility = "1.6"
+    targetCompatibility = "1.6"
+}
+
+repositories {
+    jcenter()
 }
 
 dependencies {
-    compile gradleApi()
     compile localGroovy()
-    compile ('org.jfrog.buildinfo:build-info-extractor-gradle:4.5.2') {
-        exclude module: 'groovy-all'
+    // TODO: We run into this issue: https://github.com/JFrogDev/build-info/issues/122#issuecomment-308383928
+    // Can't be resolved in a good way. Update me later ...
+    compile("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
+        exclude module: "groovy-all"
     }
-    compile 'guru.stefma.androidartifacts:androidartifacts:0.0.3'
+    compile "com.novoda:bintray-release:0.8.0"
 }
 
 publish {
-    userOrg = 'stefma'
-    groupId = 'guru.stefma.artifactorypublish'
+    userOrg = "stefma"
+    groupId = "guru.stefma.artifactorypublish"
     artifactId = rootProject.name
-    uploadName = 'ArtifactoryPublish'
+    uploadName = "ArtifactoryPublish"
     version = project.version
-    description = 'Super duper easy way to release your Android and other artifacts to artifactory'
+    description = "Super duper easy way to release your Android and other artifacts to artifactory"
     website = "https://github.com/StefMa/ArtifactoryPublish"
-    licences = ['MIT']
+    licences = ["MIT"]
 }
