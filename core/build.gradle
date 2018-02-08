@@ -1,19 +1,9 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.novoda:bintray-release:0.8.0'
-    }
-}
-
 plugins {
     id "groovy"
     id "java-gradle-plugin"
+    id "com.novoda.bintray-release" version "0.8.0"
 }
 apply plugin: "com.novoda.bintray-release"
-
-version = "0.0.4-SNAPSHOT"
 
 gradlePlugin {
     plugins {
@@ -48,7 +38,7 @@ publish {
     groupId = "guru.stefma.artifactorypublish"
     artifactId = rootProject.name
     uploadName = "ArtifactoryPublish"
-    version = project.version
+    version = "0.0.4-SNAPSHOT"
     description = "Super duper easy way to release your Android and other artifacts to artifactory"
     website = "https://github.com/StefMa/ArtifactoryPublish"
     licences = ["MIT"]
