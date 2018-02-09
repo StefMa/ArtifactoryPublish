@@ -26,8 +26,7 @@ jobs:
 
       # Try to restore cache (see ho to save cache below 👇)
       - restore_cache:
-          keys:
-          - deps-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+          key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
       - run:
           environment:
@@ -38,7 +37,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: deps-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+          key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
 workflows:
   version: 2
