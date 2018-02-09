@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+
+    steps:
+      - checkout
+
+       # Try to restore cache (see ho to save cache below 👇)
+      - restore_cache:
+          keys:
+          - deps-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+
+      - run: ./gradlew check build --no-daemon
+
+      # Save the gradle folder for caching
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: deps-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
