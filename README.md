@@ -1,3 +1,4 @@
+[![CircleCI](https://img.shields.io/circleci/project/github/StefMa/ArtifactoryPublish.svg)](https://circleci.com/gh/StefMa/ArtifactoryPublish)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [ ![Download](https://api.bintray.com/packages/stefma/maven/ArtifactoryPublish/images/download.svg) ](https://bintray.com/stefma/maven/ArtifactoryPublish/_latestVersion)
 
