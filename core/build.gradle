@@ -1,19 +1,11 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.novoda:bintray-release:0.8.0'
-    }
-}
-
 plugins {
     id "groovy"
     id "java-gradle-plugin"
+    id "org.jetbrains.kotlin.jvm" version "1.2.21"
+    id "com.novoda.bintray-release" version "0.8.0"
+    id "org.junit.platform.gradle.plugin" version "1.0.3"
 }
 apply plugin: "com.novoda.bintray-release"
-
-version = "0.0.4-SNAPSHOT"
 
 gradlePlugin {
     plugins {
@@ -41,6 +33,13 @@ dependencies {
         exclude module: "groovy-all"
     }
     compile "com.novoda:bintray-release:0.8.0"
+
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib"
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.3"
+    testCompile "org.junit.jupiter:junit-jupiter-params:5.0.3"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.0.3"
+    testCompile "org.assertj:assertj-core:3.9.0"
+    testCompile "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-alpha02"
 }
 
 publish {
@@ -48,7 +47,7 @@ publish {
     groupId = "guru.stefma.artifactorypublish"
     artifactId = rootProject.name
     uploadName = "ArtifactoryPublish"
-    version = project.version
+    version = "0.0.4-SNAPSHOT"
     description = "Super duper easy way to release your Android and other artifacts to artifactory"
     website = "https://github.com/StefMa/ArtifactoryPublish"
     licences = ["MIT"]
