@@ -10,8 +10,6 @@ A super easy way to release Android and Java artifacts to artifactory.
 This is a simple helper to simplify the configuration of the artifactory plugin.
 
 ## How to use it
-You can use it as a standalone plugin in the following way:
-
 ### Apply the plugin
 Since the plugin is **not** available via the [Gradle Plugin Portal](https://plugins.gradle.org) you have to put these 
 to the **top** of your `settings.gradle`:
