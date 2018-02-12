@@ -86,3 +86,20 @@ To publish your library to artifactory simply run
 ```
 ./gradlew clean build artifactoryPublish -PartifactoryUser=ARTIFACTORY_USERNAME -PartifactoryKey=ARTIFACTORY_KEY
 ```
+
+## Advanced
+### bintray-release
+This plugin depends on novoda's [bintray-release](https://github.com/novoda/bintray-release) and I trying to archive a
+100% interoperability. Which mean you can use **this** plugin to use it to publish your libs to a **Artifactory** *and*
+to [**Bintray**](https://bintray.com). Besides of the benefits it brings it brings also a little bit more overhead to
+setup the extension for **ArtifactoryPublish**. So keep in mind to always take a look over at 
+[bintray-release](https://github.com/novoda/bintray-release) which properties are required for the configuration and use
+these for setup the artifactoryPublish configuration as well. 
+
+> Current version we depend on: [**0.8.0**](https://github.com/novoda/bintray-release/tree/0.8.0)
+
+### Gradle compatibility
+<!-- TODO: Don't use master here but the tag for the release -->
+Since we depends heavily on `bintray-release` the [Gradle compatibility their](https://github.com/novoda/bintray-release/tree/master#gradle-compatibility)
+is identical to this plugin. 
+`ArtifactoryPublish` don't bring other Gradle version limitations. 
