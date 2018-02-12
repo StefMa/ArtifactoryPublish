@@ -1,0 +1,22 @@
+apply plugin: 'java-library'
+apply plugin: guru.stefma.artifactorypublish.ArtifactoryPublishPlugin
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation "junit:junit:4.12"
+}
+
+artifactoryPublish {
+    userOrg = 'stefma'
+    groupId = 'guru.stefma'
+    artifactId = 'jvm.sample'
+    publishVersion = '0.0.1'
+    desc = 'Just a simple java library sample'
+    website = 'https://github.com/stefma/ArtifactoryPublish'
+
+    artifactoryRepo = "example-repo-local"
+    artifactoryUrl = "http://localhost:8081/artifactory"
+}

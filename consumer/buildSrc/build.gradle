@@ -1,0 +1,24 @@
+plugins {
+    id "groovy"
+    id "java-gradle-plugin"
+}
+
+repositories {
+    jcenter()
+}
+
+// We have to make sure that we are using the same dependencies as in our 'core' project
+dependencies {
+    compile("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
+        exclude module: "groovy-all"
+    }
+    compile "com.novoda:bintray-release:0.8.0"
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDir '../../core/src/main/groovy'
+        }
+    }
+}
