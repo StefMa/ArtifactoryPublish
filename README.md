@@ -83,8 +83,8 @@ All configuration options are:
 
 > *could be added via closure extension, terminal or property file. 
 
-## Publish
-To publish your library to artifactory run
+### Publish
+To publish your library to artifactory simply run
 ```
 ./gradlew clean build artifactoryPublish -PartifactoryUser=ARTIFACTORY_USERNAME -PartifactoryKey=ARTIFACTORY_KEY
 ```
