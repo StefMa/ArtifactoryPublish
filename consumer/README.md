@@ -28,7 +28,7 @@ Set the **password** to **12341234**. Keep the rest at the default settings.
 After you have successfully setup the Artifactory you can finally publish
 the library project by running:
 ```
-./gradlew build artifactoryPublish
+./gradlew build artifactoryPublish -PartifactoryUser=admin -PartifactoryKey=12341234
 ```
 
 ### Consume the lib
