@@ -39,6 +39,14 @@ jobs:
             - ~/.gradle
           key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
+      # Install Artifactory and test uploading works
+      - run: docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
+      - run: sleep 30 # Sleep a little bit until Artifacotry is started...
+      - run:
+          command: |
+              cd consumer
+              ./gradlew build artifactoryPublish -PartifactoryUser=admin -PartifactoryKey=password --no-daemon
+
 workflows:
   version: 2
   build:
