@@ -18,18 +18,15 @@ docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactor
 ```
 [(See here for more)](https://www.jfrog.com/confluence/display/RTF/Installing+with+Docker)
 
-#### Setup
-The installed Artifactory can be found at [http://localhost:8081/artifactory/](http://localhost:8081/artifactory/).
-After the fancy splashscreen your jump directly into the setup screen.
-
-Set the **password** to **12341234**. Keep the rest at the default settings.
-
 ### Publish
 After you have successfully setup the Artifactory you can finally publish
 the library project by running:
 ```
-./gradlew build artifactoryPublish -PartifactoryUser=admin -PartifactoryKey=12341234
+./gradlew build artifactoryPublish -PartifactoryUser=admin -PartifactoryKey=password
 ```
+
+> **Note:** If you have already are installed Artifactory instance you have to use your user and your API-Key instead 
+of the [Default Admin User](https://www.jfrog.com/confluence/display/RTF/Installing+Artifactory#InstallingArtifactory-DefaultAdminUser) credentials.
 
 ### Consume the lib
 Now you should be able to consumer the already published library by create a new project with the following setup:
