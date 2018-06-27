@@ -23,7 +23,7 @@ class ArtifactoryPublishConfiguration {
                 }
                 defaults {
                     // Currently we only support the `release` publication
-                    publications ['androidArtifactsReleaseAar'].toArray()
+                    publications ('releaseAar')
                     publishArtifacts = true
                     publishPom = true
                 }
