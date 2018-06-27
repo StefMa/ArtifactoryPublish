@@ -21,6 +21,7 @@ compileGroovy {
 }
 
 repositories {
+    google()
     jcenter()
 }
 
