@@ -34,15 +34,15 @@ class ArtifactoryPublishExtension {
         mArtifactsExtension.sources = sources
     }
 
-    String getArtifactId(final String artifactId) {
+    String getArtifactId() {
         return mArtifactsExtension.artifactId
     }
 
-    boolean getJavadoc(final boolean javadoc) {
+    boolean getJavadoc() {
         return mArtifactsExtension.javadoc
     }
 
-    boolean getSources(final boolean sources) {
+    boolean getSources() {
         return mArtifactsExtension.sources
     }
 
