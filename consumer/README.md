@@ -1,8 +1,8 @@
 # A test project for ArtifactoryPublish
-The [`jvm`](jvm/) sample contains a simple class called `JVMSample` with a 
+The [`android`](android/) sample contains a simple class called `AndroidSample` with a 
 static `helloWorld()` method.
 
-The containing [build.gradle](jvm/build.gradle) is fully setup to publish 
+The containing [build.gradle](android/build.gradle) is fully setup to publish 
 this library to a Artifactory.
 
 ## Testing
@@ -40,6 +40,6 @@ repositories {
 }
 
 dependencies {
-    implementation "guru.stefma:jvm.sample:0.0.1"
+    implementation "guru.stefma.sample:android:0.0.1"
 }
 ```
