@@ -45,6 +45,7 @@ jobs:
       - run:
           command: |
               cd consumer
+              echo "sdk.dir=$HOME/android-sdk" >> local.properties
               ./gradlew build artifactoryPublish -PartifactoryUser=admin -PartifactoryKey=password --no-daemon
 
 workflows:
