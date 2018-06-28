@@ -50,7 +50,7 @@ publish {
     groupId = "guru.stefma.artifactorypublish"
     artifactId = rootProject.name
     uploadName = "ArtifactoryPublish"
-    version = "0.0.4-SNAPSHOT"
+    version = "1.0.0"
     description = "Super duper easy way to release your Android and other artifacts to artifactory"
     website = "https://github.com/StefMa/ArtifactoryPublish"
     licences = ["MIT"]
