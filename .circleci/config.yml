@@ -31,7 +31,7 @@ jobs:
       - run:
           environment:
               ANDROID_HOME: "/home/circleci/android-sdk" # TODO: Try to don't hardcode me and use $HOME env variable
-          command: ./gradlew build --no-daemon
+          command: ./gradlew test --no-daemon
 
       # Save the gradle folder for caching
       - save_cache:
