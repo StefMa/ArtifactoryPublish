@@ -101,8 +101,8 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
                             group = "net.example"
                             artifactoryPublish {
                                 artifactId = 'artifactorypublish'
-                                artifactoryUrl = "https://artifactory.example.com/"
-                                artifactoryRepo = "maven-repo"
+                                artifactoryRepo = "example-repo-local"
+                                artifactoryUrl = "http://localhost:8081/artifactory"
                             }
                         """
         )

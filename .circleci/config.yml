@@ -28,6 +28,10 @@ jobs:
       - restore_cache:
           key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
+      # Install Artifactory - has to be BEFORE we run the tests
+      - run: docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
+      - run: sleep 30 # Sleep a little bit until Artifacotry is started...
+
       - run:
           environment:
               ANDROID_HOME: "/home/circleci/android-sdk" # TODO: Try to don't hardcode me and use $HOME env variable
@@ -39,9 +43,6 @@ jobs:
             - ~/.gradle
           key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
-      # Install Artifactory and test uploading works
-      - run: docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
-      - run: sleep 30 # Sleep a little bit until Artifacotry is started...
       - run:
           command: |
               cd consumer
