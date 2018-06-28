@@ -13,9 +13,6 @@ class ArtifactoryPublishConfiguration {
     void configure(Project project) {
         ArtifactoryPublishPropertyFinder propertyFinder = new ArtifactoryPublishPropertyFinder(project, mExtension)
 
-        def publication = mExtension.publications ?: project.plugins.hasPlugin('com.android.library') ? ['release'].toArray() : ['maven'].toArray()
-        project.logger.debug("Set publication to : " + publication)
-
         project.artifactory {
             contextUrl = mExtension.artifactoryUrl
             publish {
@@ -25,7 +22,8 @@ class ArtifactoryPublishConfiguration {
                     password = propertyFinder.artifactoryKey
                 }
                 defaults {
-                    publications publication
+                    // Currently we only support the `release` publication
+                    publications ('releaseAar')
                     publishArtifacts = true
                     publishPom = true
                 }

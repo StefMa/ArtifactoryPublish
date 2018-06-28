@@ -1,21 +1,21 @@
 package guru.stefma.artifactorypublish
 
-import com.novoda.gradle.release.PublishExtension
+import guru.stefma.androidartifacts.AndroidArtifactsExtension
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class ArtifactoryPublishExtensionTest {
 
     @Test
-    fun `copyPropertiesTo should copy properties`() {
-        val publishExtension = ArtifactoryPublishExtension()
-        publishExtension.bintrayUser = "User"
-        publishExtension.bintrayKey = "Key"
-        val propertiesCopiedTo = PublishExtension()
+    fun `publishExtension should delegate correctly to artifactsExtension`() {
+        val artifactsExtension = AndroidArtifactsExtension()
+        val publishExtension = ArtifactoryPublishExtension(artifactsExtension)
+        publishExtension.setJavadoc(true)
+        publishExtension.setArtifactId("id")
+        publishExtension.setSources(false)
 
-        publishExtension.copyPropertiesTo(propertiesCopiedTo)
-
-        assertThat(propertiesCopiedTo.bintrayUser).isEqualTo("User")
-        assertThat(propertiesCopiedTo.bintrayKey).isEqualTo("Key")
+        assertThat(artifactsExtension.artifactId).isEqualTo("id")
+        assertThat(artifactsExtension.javadoc).isTrue()
+        assertThat(artifactsExtension.sources).isFalse()
     }
 }

@@ -90,18 +90,19 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
 
                             repositories {
                                 jcenter()
+                                google()
                             }
 
                             dependencies {
                                 implementation "junit:junit:4.12"
                             }
 
+                            version = "0.1"
+                            group = "net.example"
                             artifactoryPublish {
-                                groupId = 'net.example'
                                 artifactId = 'artifactorypublish'
-                                publishVersion = "0.1"
-                                artifactoryUrl = "https://artifactory.example.com/"
-                                artifactoryRepo = "maven-repo"
+                                artifactoryRepo = "example-repo-local"
+                                artifactoryUrl = "http://localhost:8081/artifactory"
                             }
                         """
         )

@@ -5,6 +5,7 @@ plugins {
 
 repositories {
     jcenter()
+    google()
 }
 
 // We have to make sure that we are using the same dependencies as in our 'core' project
@@ -12,7 +13,7 @@ dependencies {
     compile("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
         exclude module: "groovy-all"
     }
-    compile "com.novoda:bintray-release:0.8.0"
+    compile "guru.stefma.androidartifacts:androidartifacts:1.0.0"
 }
 
 sourceSets {

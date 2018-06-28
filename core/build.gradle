@@ -1,9 +1,8 @@
 plugins {
     id "groovy"
     id "java-gradle-plugin"
-    id "org.jetbrains.kotlin.jvm" version "1.2.21"
+    id "org.jetbrains.kotlin.jvm" version "1.2.50"
     id "com.novoda.bintray-release" version "0.8.0"
-    id "org.junit.platform.gradle.plugin" version "1.0.3"
 }
 
 gradlePlugin {
@@ -15,12 +14,17 @@ gradlePlugin {
     }
 }
 
+test {
+    useJUnitPlatform()
+}
+
 compileGroovy {
     sourceCompatibility = "1.6"
     targetCompatibility = "1.6"
 }
 
 repositories {
+    google()
     jcenter()
 }
 
@@ -31,14 +35,14 @@ dependencies {
     compile("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
         exclude module: "groovy-all"
     }
-    compile "com.novoda:bintray-release:0.8.0"
+    compile "guru.stefma.androidartifacts:androidartifacts:1.0.0"
 
     testCompile "org.jetbrains.kotlin:kotlin-stdlib"
-    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.3"
-    testCompile "org.junit.jupiter:junit-jupiter-params:5.0.3"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.0.3"
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.2.0"
+    testCompile "org.junit.jupiter:junit-jupiter-params:5.2.0"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.2.0"
     testCompile "org.assertj:assertj-core:3.9.0"
-    testCompile "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-alpha02"
+    testCompile "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC1"
 }
 
 publish {

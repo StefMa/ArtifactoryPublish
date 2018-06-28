@@ -1,15 +1,18 @@
 package guru.stefma.artifactorypublish
 
-import com.novoda.gradle.release.PublishExtension
-import org.codehaus.groovy.runtime.InvokerHelper
+import guru.stefma.androidartifacts.AndroidArtifactsExtension
 
 /**
- * A ArtifactoryExtension which extends from PublishExtension to make sure that we can use one closure (our own)
- * to use it for a bintray & a artifactory upload!
- *
- * You should use the `copyPropertiesTo` method to keep the PublishExtension from the BintrayRelease plugin in sync.
+ * A ArtifactoryExtension which takes the AndroidArtifactsExtension as argument to set the default properties for
+ * this class.
  */
-class ArtifactoryPublishExtension extends PublishExtension {
+class ArtifactoryPublishExtension {
+
+    private final AndroidArtifactsExtension mArtifactsExtension
+
+    ArtifactoryPublishExtension(AndroidArtifactsExtension extension) {
+        mArtifactsExtension = extension
+    }
 
     String artifactoryUrl = ""
 
@@ -19,18 +22,28 @@ class ArtifactoryPublishExtension extends PublishExtension {
 
     String artifactoryKey
 
-    /**
-     * Copy properties from *this* to the given PublishExtension.
-     *
-     * So we can make sure that the `artifactoryPublish` extension can be used for the `bintrayUpload` as well...
-     *
-     * @param publishExtension the extension to setup. Should come from the com.novoda.binray-release plugin.
-     */
-    void copyPropertiesTo(PublishExtension publishExtension) {
-        def properties = this.properties
-        properties.remove("metaClass")
-        properties.remove("class")
-        InvokerHelper.setProperties(publishExtension, properties)
+    void setArtifactId(final String artifactId) {
+        mArtifactsExtension.artifactId = artifactId
+    }
+
+    void setJavadoc(final boolean javadoc) {
+        mArtifactsExtension.javadoc = javadoc
+    }
+
+    void setSources(final boolean sources) {
+        mArtifactsExtension.sources = sources
+    }
+
+    String getArtifactId() {
+        return mArtifactsExtension.artifactId
+    }
+
+    boolean getJavadoc() {
+        return mArtifactsExtension.javadoc
+    }
+
+    boolean getSources() {
+        return mArtifactsExtension.sources
     }
 
 }
