@@ -26,4 +26,4 @@ You can simply use the **Artifactory docker** image:
 ```
 docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
 ```
-You can also checkout the [**consumer README**](consumer/README.md) for more information.
+You can also checkout the [**consumer README**](subprojects/consumer/README.md) for more information.

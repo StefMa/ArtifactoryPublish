@@ -30,7 +30,7 @@ jobs:
 
       # Install Artifactory - has to be BEFORE we run the tests
       - run: docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
-      - run: sleep 30 # Sleep a little bit until Artifacotry is started...
+      - run: sleep 30 # Sleep a little bit until Artifactory has started...
 
       - run:
           environment:
@@ -45,7 +45,7 @@ jobs:
 
       - run:
           command: |
-              cd consumer
+              cd subprojects/consumer
               echo "sdk.dir=$HOME/android-sdk" >> local.properties
               ./gradlew build artifactoryPublish -PartifactoryUser=admin -PartifactoryKey=password --no-daemon
 

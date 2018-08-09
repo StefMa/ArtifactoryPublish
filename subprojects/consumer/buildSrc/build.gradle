@@ -19,7 +19,7 @@ dependencies {
 sourceSets {
     main {
         groovy {
-            srcDir '../../src/main/groovy'
+            srcDir '../../../src/main/groovy'
         }
     }
 }
