@@ -6,7 +6,7 @@ import guru.stefma.androidartifacts.AndroidArtifactsExtension
  * A ArtifactoryExtension which takes the AndroidArtifactsExtension
  * as argument to set the default properties for this class.
  */
-class ArtifactoryPublishExtension(
+open class ArtifactoryPublishExtension(
         private val artifactsExtension: AndroidArtifactsExtension
 ) {
 
