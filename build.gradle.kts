@@ -1,5 +1,4 @@
 plugins {
-    groovy
     `java-gradle-plugin`
     kotlin("jvm") version "1.2.50"
     id("com.novoda.bintray-release") version "0.8.0"
