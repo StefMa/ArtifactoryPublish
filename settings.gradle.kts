@@ -1,11 +1,12 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        google()
     }
     resolutionStrategy {
         eachPlugin {
-            if (requested.id.id == "com.novoda.bintray-release") {
-                useModule("com.novoda:bintray-release:${requested.version}")
+            if (requested.id.id == "guru.stefma.bintrayrelease") {
+                useModule("guru.stefma.bintrayrelease:bintrayrelease:${requested.version}")
             }
             if (requested.id.id == "org.junit.platform.gradle.plugin") {
                 useModule("org.junit.platform:junit-platform-gradle-plugin:$requested.version")
@@ -13,5 +14,3 @@ pluginManagement {
         }
     }
 }
-
-rootProject.name = "artifactorypublish"

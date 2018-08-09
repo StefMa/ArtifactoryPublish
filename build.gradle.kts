@@ -1,8 +1,12 @@
+import guru.stefma.bintrayrelease.PublishExtension
+
 plugins {
     `java-gradle-plugin`
     kotlin("jvm") version "1.2.60"
-    id("com.novoda.bintray-release") version "0.8.0"
+    id("java-library")
+    id("guru.stefma.bintrayrelease") version "1.0.0" apply false
 }
+apply(plugin = "guru.stefma.bintrayrelease")
 
 gradlePlugin {
     plugins {
@@ -38,13 +42,13 @@ dependencies {
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC1")
 }
 
-publish {
+group = "guru.stefma.artifactorypublish"
+version = "1.0.0"
+configure<PublishExtension> {
     userOrg = "stefma"
-    groupId = "guru.stefma.artifactorypublish"
-    artifactId = rootProject.name
+    artifactId = "artifactorypublish"
     uploadName = "ArtifactoryPublish"
-    version = "1.0.0"
-    description = "Super duper easy way to release your Android and other artifacts to artifactory"
+    desc = "Super duper easy way to release your Android and other artifacts to artifactory"
     website = "https://github.com/StefMa/ArtifactoryPublish"
     setLicences("MIT")
 }
