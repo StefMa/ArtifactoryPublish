@@ -1,5 +1,4 @@
 plugins {
-    groovy
     `java-gradle-plugin`
     kotlin("jvm") version "1.2.50"
     id("com.novoda.bintray-release") version "0.8.0"
@@ -18,20 +17,13 @@ tasks.withType(Test::class.java) {
     useJUnitPlatform()
 }
 
-
-tasks.withType(GroovyCompile::class.java) {
-    sourceCompatibility = "1.6"
-    targetCompatibility = "1.6"
-}
-
-
 repositories {
     google()
     jcenter()
 }
 
 dependencies {
-    implementation(localGroovy())
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
     // TODO: We run into this issue: https://github.com/JFrogDev/build-info/issues/122#issuecomment-308383928
     // Can't be resolved in a good way. Update me later ...
     implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
@@ -39,7 +31,6 @@ dependencies {
     }
     implementation("guru.stefma.androidartifacts:androidartifacts:1.0.0")
 
-    testImplementation("org.jetbrains.kotlin:kotlin-stdlib")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.2.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.2.0")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.2.0")
