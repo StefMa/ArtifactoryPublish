@@ -14,7 +14,7 @@ class ArtifactoryPublishConfiguration(
     private val propertyFinder = ArtifactoryPublishPropertyFinder(project, extension)
 
     fun configure() {
-        project.extensions.getByType(ArtifactoryPluginConvention::class.java).apply {
+        project.convention.getPlugin(ArtifactoryPluginConvention::class.java).apply {
             setContextUrl(extension.artifactoryUrl)
             publish(closureOf<PublisherConfig> {
                 repository(closureOf<PublisherConfig.Repository> {
