@@ -1,7 +1,7 @@
 package guru.stefma.artifactorypublish
 
-import guru.stefma.androidartifacts.AndroidArtifactsExtension
 import guru.stefma.androidartifacts.AndroidArtifactsPlugin
+import guru.stefma.androidartifacts.ArtifactsExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jfrog.gradle.plugin.artifactory.ArtifactoryPlugin
@@ -17,7 +17,7 @@ class ArtifactoryPublishPlugin : Plugin<Project> {
         project.plugins.apply(ArtifactoryPlugin::class.java)
         // Apply the AndroidArtifacts plugin
         project.plugins.apply(AndroidArtifactsPlugin::class.java)
-        val artifactsExtension = project.extensions.getByType(AndroidArtifactsExtension::class.java)
+        val artifactsExtension = project.extensions.getByType(ArtifactsExtension::class.java)
 
         // Create our own extension which can be setup
         val extension =

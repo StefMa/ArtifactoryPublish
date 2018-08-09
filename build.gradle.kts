@@ -1,8 +1,12 @@
+import guru.stefma.bintrayrelease.PublishExtension
+
 plugins {
     `java-gradle-plugin`
-    kotlin("jvm") version "1.2.50"
-    id("com.novoda.bintray-release") version "0.8.0"
+    kotlin("jvm") version "1.2.60"
+    id("java-library")
+    id("guru.stefma.bintrayrelease") version "1.0.0" apply false
 }
+apply(plugin = "guru.stefma.bintrayrelease")
 
 gradlePlugin {
     plugins {
@@ -29,22 +33,22 @@ dependencies {
     implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
         exclude(module = "groovy-all")
     }
-    implementation("guru.stefma.androidartifacts:androidartifacts:1.0.0")
+    implementation("guru.stefma.androidartifacts:androidartifacts:1.1.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.2.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.2.0")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.2.0")
-    testImplementation("org.assertj:assertj-core:3.9.0")
+    testImplementation("org.assertj:assertj-core:3.10.0")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC1")
 }
 
-publish {
+group = "guru.stefma.artifactorypublish"
+version = "1.0.0"
+configure<PublishExtension> {
     userOrg = "stefma"
-    groupId = "guru.stefma.artifactorypublish"
-    artifactId = rootProject.name
+    artifactId = "artifactorypublish"
     uploadName = "ArtifactoryPublish"
-    version = "1.0.0"
-    description = "Super duper easy way to release your Android and other artifacts to artifactory"
+    desc = "Super duper easy way to release your Android and other artifacts to artifactory"
     website = "https://github.com/StefMa/ArtifactoryPublish"
     setLicences("MIT")
 }
