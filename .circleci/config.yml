@@ -26,7 +26,7 @@ jobs:
 
       # Try to restore cache (see ho to save cache below 👇)
       - restore_cache:
-          key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+          key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
       # Install Artifactory - has to be BEFORE we run the tests
       - run: docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
@@ -41,7 +41,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+          key: gradle-cache-v0-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
       - run:
           command: |
