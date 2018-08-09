@@ -1,13 +1,13 @@
 package guru.stefma.artifactorypublish
 
-import guru.stefma.androidartifacts.AndroidArtifactsExtension
+import guru.stefma.androidartifacts.ArtifactsExtension
 
 /**
  * A ArtifactoryExtension which takes the AndroidArtifactsExtension
  * as argument to set the default properties for this class.
  */
 open class ArtifactoryPublishExtension(
-        private val artifactsExtension: AndroidArtifactsExtension
+        private val artifactsExtension: ArtifactsExtension
 ) {
 
     var artifactoryUrl = ""
