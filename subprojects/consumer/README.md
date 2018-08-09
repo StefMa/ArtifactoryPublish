@@ -16,6 +16,8 @@ You can simply install a Artifactory instance via Docker:
 ```
 docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
 ```
+The instance will be then available at [http://localhost:8081/artifactory/](http://localhost:8081/artifactory/).
+
 [(See here for more)](https://www.jfrog.com/confluence/display/RTF/Installing+with+Docker)
 
 ### Publish
