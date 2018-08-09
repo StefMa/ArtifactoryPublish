@@ -63,7 +63,7 @@ To publish your library to artifactory simply run
 ## Gradle support
 Unfourtaly the [AndroidArtifacts plugin](https://github.com/StefMa/AndroidArtifacts) (where we heavily depends on (see [DEVELOPMENT.md](DEVELOPMENT.md) for more)) don't have a proper Gradle support section.
 
-But this plugin has setup [some tests](https://github.com/StefMa/ArtifactoryPublish/blob/3a7828a4f2356c95f1e12d5a791b7416282ebd49/core/src/test/kotlin/guru/stefma/artifactorypublish/ArtifactoryPublishPluginTest.kt) where it approves that the following Gradle versions are definitely supported:
+But this plugin has setup [some tests](https://github.com/StefMa/ArtifactoryPublish/blob/3a7828a4f2356c95f1e12d5a791b7416282ebd49/src/test/kotlin/guru/stefma/artifactorypublish/ArtifactoryPublishPluginTest.kt) where it approves that the following Gradle versions are definitely supported:
 * 4.5
 * 4.5.1
 * 4.6

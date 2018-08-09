@@ -7,7 +7,7 @@ for us. This plugin will only use the generated **publications** and streamline 
 
 ### Artifactory Plugin
 As already mentioned above we use the [Artifactory plugin](https://www.jfrog.com/confluence/display/RTF/Gradle+Artifactory+Plugin).
-Basically this plugin will only setup some default properties for you for this plugin. See the [`ArtifactoryPublishConfiguration` class](https://github.com/StefMa/ArtifactoryPublish/blob/1341ccdc82d1034151aab68ccefb7568e0bbb471/core/src/main/groovy/guru/stefma/artifactorypublish/ArtifactoryPublishConfiguration.groovy).
+Basically this plugin will only setup some default properties for you for this plugin. See the [`ArtifactoryPublishConfiguration` class](https://github.com/StefMa/ArtifactoryPublish/blob/1341ccdc82d1034151aab68ccefb7568e0bbb471/src/main/groovy/guru/stefma/artifactorypublish/ArtifactoryPublishConfiguration.groovy).
 
 ## Tasks
 Because we depend on the [AndroidArtifacts plugin](https://github.com/StefMa/AndroidArtifacts/) the same tasks are available in this plugin
@@ -26,4 +26,4 @@ You can simply use the **Artifactory docker** image:
 ```
 docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
 ```
-You can also checkout the [**consumer README**](consumer/README.md) for more information.
+You can also checkout the [**consumer README**](subprojects/consumer/README.md) for more information.
