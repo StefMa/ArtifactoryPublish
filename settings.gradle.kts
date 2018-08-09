@@ -14,4 +14,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'artifactorypublish'
+rootProject.name = "artifactorypublish"
