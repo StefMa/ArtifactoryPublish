@@ -10,23 +10,23 @@ import org.jfrog.gradle.plugin.artifactory.ArtifactoryPlugin
  * A plugin which will create artifacts for your android artifacts and automatically setup the artifactory
  * closure (from the "original" jfrog artifactory plugin) to make it easily to upload to a artifactory.
  */
-class ArtifactoryPublishPlugin implements Plugin<Project> {
+class ArtifactoryPublishPlugin : Plugin<Project> {
 
-    @Override
-    void apply(Project project) {
+    override fun apply(project: Project) {
         // Apply the artifactory plugin
-        project.plugins.apply(ArtifactoryPlugin.class)
+        project.plugins.apply(ArtifactoryPlugin::class.java)
         // Apply the AndroidArtifacts plugin
-        project.plugins.apply(AndroidArtifactsPlugin.class)
-        AndroidArtifactsExtension artifactsExtension = project.extensions.getByType(AndroidArtifactsExtension.class)
+        project.plugins.apply(AndroidArtifactsPlugin::class.java)
+        val artifactsExtension = project.extensions.getByType(AndroidArtifactsExtension::class.java)
 
         // Create our own extension which can be setup
-        def extension =
-                project.extensions.create('artifactoryPublish', ArtifactoryPublishExtension.class, artifactsExtension)
+        val extension =
+                project.extensions.create("artifactoryPublish", ArtifactoryPublishExtension::class.java, artifactsExtension)
 
         project.afterEvaluate {
             // Configure the artifactory closure with our extension
-            new ArtifactoryPublishConfiguration(extension).configure(project)
+            ArtifactoryPublishConfiguration(project, extension)
+                    .configure()
         }
     }
 

@@ -10,9 +10,9 @@ class ArtifactoryPublishExtensionTest {
     fun `publishExtension should delegate correctly to artifactsExtension`() {
         val artifactsExtension = AndroidArtifactsExtension()
         val publishExtension = ArtifactoryPublishExtension(artifactsExtension)
-        publishExtension.setJavadoc(true)
-        publishExtension.setArtifactId("id")
-        publishExtension.setSources(false)
+        publishExtension.javadoc = true
+        publishExtension.artifactId = "id"
+        publishExtension.sources = false
 
         assertThat(artifactsExtension.artifactId).isEqualTo("id")
         assertThat(artifactsExtension.javadoc).isTrue()
