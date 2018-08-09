@@ -1,6 +1,6 @@
 plugins {
     id "java-gradle-plugin"
-    id "org.jetbrains.kotlin.jvm" version "1.2.50"
+    id "org.jetbrains.kotlin.jvm" version "1.2.60"
 }
 
 repositories {
@@ -14,7 +14,7 @@ dependencies {
     compile("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
         exclude module: "groovy-all"
     }
-    compile "guru.stefma.androidartifacts:androidartifacts:1.0.0"
+    compile "guru.stefma.androidartifacts:androidartifacts:1.1.1"
 }
 
 sourceSets.main.kotlin.srcDir("../../../src/main/kotlin")

@@ -1,6 +1,6 @@
 plugins {
     `java-gradle-plugin`
-    kotlin("jvm") version "1.2.50"
+    kotlin("jvm") version "1.2.60"
     id("com.novoda.bintray-release") version "0.8.0"
 }
 
@@ -29,12 +29,12 @@ dependencies {
     implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
         exclude(module = "groovy-all")
     }
-    implementation("guru.stefma.androidartifacts:androidartifacts:1.0.0")
+    implementation("guru.stefma.androidartifacts:androidartifacts:1.1.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.2.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.2.0")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.2.0")
-    testImplementation("org.assertj:assertj-core:3.9.0")
+    testImplementation("org.assertj:assertj-core:3.10.0")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC1")
 }
 
