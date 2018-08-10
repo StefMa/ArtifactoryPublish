@@ -11,10 +11,8 @@ repositories {
 // We have to make sure that we are using the same dependencies as in our top-level project
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    compile("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
-        exclude module: "groovy-all"
-    }
-    compile "guru.stefma.androidartifacts:androidartifacts:1.1.1"
+    implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.7.5")
+    implementation("guru.stefma.androidartifacts:androidartifacts:1.1.1")
 }
 
 sourceSets.main.kotlin.srcDir("../../../src/main/kotlin")
