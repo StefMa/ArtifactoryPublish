@@ -28,8 +28,7 @@ class ArtifactoryPublishConfiguration(
             })
         }
         (project.tasks.getByName("artifactoryPublish") as ArtifactoryTask).apply {
-            // Currently we only support the `release` publication
-            publications("releaseAar")
+            publications(extension.publications)
             setPublishArtifacts(true)
             setPublishPom(true)
         }
