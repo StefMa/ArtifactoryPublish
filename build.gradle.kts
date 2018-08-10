@@ -28,11 +28,7 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    // TODO: We run into this issue: https://github.com/JFrogDev/build-info/issues/122#issuecomment-308383928
-    // Can't be resolved in a good way. Update me later ...
-    implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.4.12") {
-        exclude(module = "groovy-all")
-    }
+    implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.7.5")
     implementation("guru.stefma.androidartifacts:androidartifacts:1.1.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.2.0")
