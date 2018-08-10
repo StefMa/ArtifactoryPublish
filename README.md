@@ -4,7 +4,7 @@
 
 # ArtifactoryPublish
 
-A super easy way to release Android ~and Java artifacts~ to Artifactory.
+A super easy way to release Android and Java artifacts to Artifactory.
 
 ## Description
 This is a simple helper to simplify the configuration of the [Artifactory plugin](https://www.jfrog.com/confluence/display/RTF/Gradle+Artifactory+Plugin).
@@ -28,8 +28,8 @@ buildscript {
 Then you are able to apply the `guru.stefma.artifactorypublish` plugin:
 ```groovy
 apply plugin: "com.android.library"
-apply plugin: "org.jetbrains.kotlin-android" //1
-apply plugin: "guru.stefma.artifactorypublish" //2
+apply plugin: "org.jetbrains.kotlin-android" // <1>
+apply plugin: "guru.stefma.artifactorypublish" // <2>
 
 version = "1.0.0"
 group = "guru.stefma.artifactorypublish"
@@ -37,20 +37,24 @@ artifactoryPublish {
     artifactId = 'artifactorypublish'
     artifactoryRepo = "example-repo-local"
     artifactoryUrl = "http://localhost:8081/artifactory"
+    publications = ["releaseAar"] // <3>
 }
 ```
 * **//1:** The Kotlin plugin is optional of course. But if you add it, it will generate a KDoc together with a javadoc.
 * **//2:** The **ArtifactoryPublish** plugin should always be added **after** the android library and kotlin-android plugin.
+* **//3:** To see a list of **all available publications** just run the `androidArtifactGeneratedPublications` task.
 
 ### Configuration
 There are several configuration options. The following table give you a overview about all of them:
 
 | Property | Description | Mandatory | Property finder* |
 |-|-|-|-|
+| artifactId | The artifact id | ✅ | ❌ |
 | artifactoryUrl | Url to your artifactory | ✅ | ❌ |
-| artifactoryRepo | Repository name | ✅ | ❌ |
+| artifactoryRepo | The Repository name | ✅ | ❌ |
 | artifactoryUser | Artifactory username | ✅ | ✅ |
 | artifactoryKey | API Key or Password | ✅ | ✅ |
+| publications | The publications you want to publish | ✅ | ❌ |
 
 > *can be added via [Gradle properties](https://docs.gradle.org/current/userguide/build_environment.html)
 
@@ -61,7 +65,7 @@ To publish your library to artifactory simply run
 ```
 
 ## Gradle support
-Unfourtaly the [AndroidArtifacts plugin](https://github.com/StefMa/AndroidArtifacts) (where we heavily depends on (see [DEVELOPMENT.md](DEVELOPMENT.md) for more)) don't have a proper Gradle support section.
+Unfortunately the [AndroidArtifacts plugin](https://github.com/StefMa/AndroidArtifacts) (where we heavily depends on (see [DEVELOPMENT.md](DEVELOPMENT.md) for more)) don't have a proper Gradle support section.
 
 But this plugin has setup [some tests](https://github.com/StefMa/ArtifactoryPublish/blob/3a7828a4f2356c95f1e12d5a791b7416282ebd49/src/test/kotlin/guru/stefma/artifactorypublish/ArtifactoryPublishPluginTest.kt) where it approves that the following Gradle versions are definitely supported:
 * 4.5
