@@ -1,18 +1,17 @@
 # A test project for ArtifactoryPublish
-The [`android`](android/) sample contains a simple class called `AndroidSample` with a 
-static `helloWorld()` method.
+The [`android`](android/) and the [`java`](java/) sample contains a simple class
+with a static `helloWorld()` method.
 
-The containing [build.gradle](android/build.gradle) is fully setup to publish 
-this library to a Artifactory.
+The containing build scripts ([android](android/build.gradle) & [java](java/build.gradle)) 
+are fully setup to publish the libraries to an Artifactory.
 
 ## Testing
-### Artifactory
+### Install Artifactory
 To test this project you need a installed Artifactory instance.
 If you already have a installed instance somewhere you are ready to go. 
 Just jump over this section.
 
-#### Artifactory
-You can simply install a Artifactory instance via Docker:
+if not you can simply install a Artifactory instance via Docker:
 ```
 docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
 ```
@@ -31,17 +30,14 @@ the library project by running:
 of the [Default Admin User](https://www.jfrog.com/confluence/display/RTF/Installing+Artifactory#InstallingArtifactory-DefaultAdminUser) credentials.
 
 ### Consume the lib
-Now you should be able to consumer the already published library by create a new project with the following setup:
+Now you should be able to consum the published libraries by create a new project with the following dependencies:
 ```groovy
-plugins {
-    id "java-library"
-}
-
 repositories {
     maven { url "http://localhost:8081/artifactory/example-repo-local" }
 }
 
 dependencies {
     implementation "guru.stefma.sample:android:0.0.1"
+    implementation "guru.stefma.sample:java:0.0.1"
 }
 ```
