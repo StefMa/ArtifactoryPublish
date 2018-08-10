@@ -18,6 +18,8 @@ open class ArtifactoryPublishExtension(
 
     var artifactoryKey: String? = null
 
+    var publications = emptyArray<String>()
+
     var artifactId
         set(value) {
             artifactsExtension.artifactId = value

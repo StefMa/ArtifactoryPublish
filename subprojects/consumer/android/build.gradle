@@ -32,4 +32,5 @@ artifactoryPublish {
 
     artifactoryRepo = "example-repo-local"
     artifactoryUrl = "http://localhost:8081/artifactory"
+    publications = ["releaseAar"]
 }

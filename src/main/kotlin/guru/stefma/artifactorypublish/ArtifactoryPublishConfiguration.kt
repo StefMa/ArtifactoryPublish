@@ -1,6 +1,7 @@
 package guru.stefma.artifactorypublish
 
 import closureOf
+import com.sun.xml.fastinfoset.util.StringArray
 import org.gradle.api.Project
 import org.jfrog.gradle.plugin.artifactory.dsl.ArtifactoryPluginConvention
 import org.jfrog.gradle.plugin.artifactory.dsl.PublisherConfig
@@ -28,8 +29,7 @@ class ArtifactoryPublishConfiguration(
             })
         }
         (project.tasks.getByName("artifactoryPublish") as ArtifactoryTask).apply {
-            // Currently we only support the `release` publication
-            publications("releaseAar")
+            publications(*extension.publications)
             setPublishArtifacts(true)
             setPublishPom(true)
         }
