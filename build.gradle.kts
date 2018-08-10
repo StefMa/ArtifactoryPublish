@@ -39,7 +39,7 @@ dependencies {
 }
 
 group = "guru.stefma.artifactorypublish"
-version = "1.0.0"
+version = "1.1.0"
 configure<PublishExtension> {
     userOrg = "stefma"
     artifactId = "artifactorypublish"
