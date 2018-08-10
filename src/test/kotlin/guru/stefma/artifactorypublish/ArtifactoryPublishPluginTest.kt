@@ -44,8 +44,9 @@ class ArtifactoryPublishPluginTest(
                 "4.5.1, 1",
                 "4.6, 1",
                 "4.7, 1",
-                "4.8, 0",
-                "4.8.1, 0"
+                "4.8, 1",
+                "4.8.1, 1",
+                "4.9, 1"
             ]
     )
     fun `test publishArtifactory task in an java project with different gradle versions`(
@@ -67,8 +68,9 @@ class ArtifactoryPublishPluginTest(
                 "4.5.1, 1",
                 "4.6, 1",
                 "4.7, 1",
-                "4.8, 0",
-                "4.8.1, 0"
+                "4.8, 1",
+                "4.8.1, 1",
+                "4.9, 1"
             ]
     )
     fun `test publishArtifactory task in an android project with different gradle versions`(
