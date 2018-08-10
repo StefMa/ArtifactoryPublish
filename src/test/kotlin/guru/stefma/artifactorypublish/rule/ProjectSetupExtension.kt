@@ -32,23 +32,27 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
                 """
                             plugins {
                                 id 'java-library'
-                                id 'guru.stefma.artifactorypublish'
+                                id 'guru.stefma.artifactorypublish' apply false
                             }
+                            apply plugin: "guru.stefma.artifactorypublish"
 
                             repositories {
                                 jcenter()
+                                google()
                             }
 
                             dependencies {
                                 implementation "junit:junit:4.12"
                             }
 
+                            version = "0.1"
+                            group = "net.example.java"
                             artifactoryPublish {
-                                groupId = 'net.example'
                                 artifactId = 'artifactorypublish'
-                                publishVersion = "0.1"
-                                artifactoryUrl = "https://artifactory.example.com/"
-                                artifactoryRepo = "maven-repo"
+
+                                artifactoryRepo = "example-repo-local"
+                                artifactoryUrl = "http://localhost:8081/artifactory"
+                                publications = ["maven"]
                             }
                         """
         )
@@ -98,7 +102,7 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
                             }
 
                             version = "0.1"
-                            group = "net.example"
+                            group = "net.example.android"
                             artifactoryPublish {
                                 artifactId = 'artifactorypublish'
 
