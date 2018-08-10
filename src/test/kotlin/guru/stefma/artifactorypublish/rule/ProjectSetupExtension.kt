@@ -101,8 +101,10 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
                             group = "net.example"
                             artifactoryPublish {
                                 artifactId = 'artifactorypublish'
+
                                 artifactoryRepo = "example-repo-local"
                                 artifactoryUrl = "http://localhost:8081/artifactory"
+                                publications = ["releaseAar"]
                             }
                         """
         )
