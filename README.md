@@ -34,7 +34,7 @@ apply plugin: "guru.stefma.artifactorypublish" // <2>
 version = "1.0.0"
 group = "guru.stefma.artifactorypublish"
 artifactoryPublish {
-    artifactId = 'artifactorypublish'
+    artifactId = "artifactorypublish"
     artifactoryRepo = "example-repo-local"
     artifactoryUrl = "http://localhost:8081/artifactory"
     publications = ["releaseAar"] // <3>
