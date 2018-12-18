@@ -28,14 +28,14 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.7.5")
-    implementation("guru.stefma.androidartifacts:androidartifacts:1.1.1")
+    implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.8.1")
+    implementation("guru.stefma.androidartifacts:androidartifacts:1.3.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.2.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.2.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.2.0")
-    testImplementation("org.assertj:assertj-core:3.10.0")
-    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.3.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.3.2")
+    testImplementation("org.assertj:assertj-core:3.11.1")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0")
 }
 
 group = "guru.stefma.artifactorypublish"
