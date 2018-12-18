@@ -62,21 +62,10 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
         val buildScript = File(androidProjectDir, "build.gradle")
         buildScript.writeText(
                 """
-                            buildscript {
-                                repositories {
-                                    jcenter()
-                                    google()
-                                }
-                                dependencies {
-                                    classpath 'com.android.tools.build:gradle:3.0.1'
-                                }
-                            }
-
                             plugins {
+                                id 'com.android.library'
                                 id 'guru.stefma.artifactorypublish' apply false
                             }
-
-                            apply plugin: "com.android.library"
                             apply plugin: "guru.stefma.artifactorypublish"
 
                             android {
