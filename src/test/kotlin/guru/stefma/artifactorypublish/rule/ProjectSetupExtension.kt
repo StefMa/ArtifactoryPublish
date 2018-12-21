@@ -13,7 +13,7 @@ import java.io.File
  *
  * Must be registered at class level.
  */
-class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterResolver {
+class ProjectSetupExtension : BeforeEachCallback, AfterEachCallback, ParameterResolver {
 
     private var javaProjectDir: File = createTempDir(suffix = "", prefix = "java")
 
@@ -22,7 +22,7 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
     /**
      * Create the buildScripts
      */
-    override fun beforeAll(context: ExtensionContext?) {
+    override fun beforeEach(context: ExtensionContext?) {
         createJavaBuildScript()
         createAndroidBuildScript()
     }
@@ -100,9 +100,9 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
     /**
      * Clean up. Delete the tempDirs ([javaProjectDir] & [androidProjectDir])
      */
-    override fun afterAll(context: ExtensionContext?) {
-        javaProjectDir.deleteRecursively()
-        androidProjectDir.deleteRecursively()
+    override fun afterEach(context: ExtensionContext?) {
+        javaProjectDir.listFiles().forEach { it.deleteRecursively() }
+        androidProjectDir.listFiles().forEach { it.deleteRecursively() }
     }
 
     /**
