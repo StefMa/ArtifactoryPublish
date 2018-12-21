@@ -1,5 +1,6 @@
 apply plugin: 'java-library'
 apply plugin: 'guru.stefma.artifactorypublish'
+apply plugin: 'guru.stefma.artifacts'
 
 repositories {
     jcenter()
@@ -11,9 +12,11 @@ dependencies {
 
 version = "0.0.1"
 group = "guru.stefma.sample"
-artifactoryPublish {
+javaArtifact {
     artifactId = 'java'
+}
 
+artifactoryPublish {
     artifactoryRepo = "example-repo-local"
     artifactoryUrl = "http://localhost:8081/artifactory"
     publications = ["maven"]

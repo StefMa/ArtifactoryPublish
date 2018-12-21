@@ -1,5 +1,6 @@
-apply plugin: 'com.android.library'
 apply plugin: 'guru.stefma.artifactorypublish'
+apply plugin: 'guru.stefma.artifacts'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion = 26
@@ -27,9 +28,11 @@ dependencies {
 
 version = "0.0.1"
 group = "guru.stefma.sample"
-artifactoryPublish {
-    artifactId = 'android'
+androidArtifact {
+    artifactId = "android"
+}
 
+artifactoryPublish {
     artifactoryRepo = "example-repo-local"
     artifactoryUrl = "http://localhost:8081/artifactory"
     publications = ["releaseAar"]
