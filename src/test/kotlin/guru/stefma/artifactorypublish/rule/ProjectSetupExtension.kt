@@ -32,9 +32,9 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
                 """
                             plugins {
                                 id 'java-library'
-                                id 'guru.stefma.artifactorypublish' apply false
+                                id 'guru.stefma.artifacts'
+                                id 'guru.stefma.artifactorypublish'
                             }
-                            apply plugin: "guru.stefma.artifactorypublish"
 
                             repositories {
                                 jcenter()
@@ -47,9 +47,11 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
 
                             version = "0.1"
                             group = "net.example.java"
-                            artifactoryPublish {
+                            javaArtifact {
                                 artifactId = 'artifactorypublish'
+                            }
 
+                            artifactoryPublish {
                                 artifactoryRepo = "example-repo-local"
                                 artifactoryUrl = "http://localhost:8081/artifactory"
                                 publications = ["maven"]
@@ -64,9 +66,9 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
                 """
                             plugins {
                                 id 'com.android.library'
-                                id 'guru.stefma.artifactorypublish' apply false
+                                id 'guru.stefma.artifacts'
+                                id 'guru.stefma.artifactorypublish'
                             }
-                            apply plugin: "guru.stefma.artifactorypublish"
 
                             android {
                                 compileSdkVersion 26
@@ -92,9 +94,11 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
 
                             version = "0.1"
                             group = "net.example.android"
-                            artifactoryPublish {
+                            androidArtifact {
                                 artifactId = 'artifactorypublish'
+                            }
 
+                            artifactoryPublish {
                                 artifactoryRepo = "example-repo-local"
                                 artifactoryUrl = "http://localhost:8081/artifactory"
                                 publications = ["releaseAar"]
