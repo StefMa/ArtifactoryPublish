@@ -1,5 +1,6 @@
 package guru.stefma.artifactorypublish.rule
 
+import appendAndroidExtension
 import org.junit.jupiter.api.extension.*
 import java.io.File
 
@@ -12,7 +13,7 @@ import java.io.File
  *
  * Must be registered at class level.
  */
-class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterResolver {
+class ProjectSetupExtension : BeforeEachCallback, AfterEachCallback, ParameterResolver {
 
     private var javaProjectDir: File = createTempDir(suffix = "", prefix = "java")
 
@@ -21,7 +22,7 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
     /**
      * Create the buildScripts
      */
-    override fun beforeAll(context: ExtensionContext?) {
+    override fun beforeEach(context: ExtensionContext?) {
         createJavaBuildScript()
         createAndroidBuildScript()
     }
@@ -32,9 +33,9 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
                 """
                             plugins {
                                 id 'java-library'
-                                id 'guru.stefma.artifactorypublish' apply false
+                                id 'guru.stefma.artifacts'
+                                id 'guru.stefma.artifactorypublish'
                             }
-                            apply plugin: "guru.stefma.artifactorypublish"
 
                             repositories {
                                 jcenter()
@@ -47,9 +48,11 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
 
                             version = "0.1"
                             group = "net.example.java"
-                            artifactoryPublish {
+                            javaArtifact {
                                 artifactId = 'artifactorypublish'
+                            }
 
+                            artifactoryPublish {
                                 artifactoryRepo = "example-repo-local"
                                 artifactoryUrl = "http://localhost:8081/artifactory"
                                 publications = ["maven"]
@@ -64,27 +67,11 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
                 """
                             plugins {
                                 id 'com.android.library'
-                                id 'guru.stefma.artifactorypublish' apply false
-                            }
-                            apply plugin: "guru.stefma.artifactorypublish"
-
-                            android {
-                                compileSdkVersion 26
-                                buildToolsVersion "26.0.2"
-                                defaultConfig {
-                                    minSdkVersion 16
-                                    versionCode 1
-                                    versionName "0.0.1"
-                                }
+                                id 'guru.stefma.artifacts'
+                                id 'guru.stefma.artifactorypublish'
                             }
 
-                            // Disable lint. No need to run it...
-                            tasks.lint.enabled = false
-
-                            repositories {
-                                jcenter()
-                                google()
-                            }
+                            ${appendAndroidExtension()}
 
                             dependencies {
                                 implementation "junit:junit:4.12"
@@ -92,9 +79,11 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
 
                             version = "0.1"
                             group = "net.example.android"
-                            artifactoryPublish {
+                            androidArtifact {
                                 artifactId = 'artifactorypublish'
+                            }
 
+                            artifactoryPublish {
                                 artifactoryRepo = "example-repo-local"
                                 artifactoryUrl = "http://localhost:8081/artifactory"
                                 publications = ["releaseAar"]
@@ -111,9 +100,9 @@ class ProjectSetupExtension : BeforeAllCallback, AfterAllCallback, ParameterReso
     /**
      * Clean up. Delete the tempDirs ([javaProjectDir] & [androidProjectDir])
      */
-    override fun afterAll(context: ExtensionContext?) {
-        javaProjectDir.deleteRecursively()
-        androidProjectDir.deleteRecursively()
+    override fun afterEach(context: ExtensionContext?) {
+        javaProjectDir.listFiles().forEach { it.deleteRecursively() }
+        androidProjectDir.listFiles().forEach { it.deleteRecursively() }
     }
 
     /**
