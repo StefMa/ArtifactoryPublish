@@ -1,7 +1,6 @@
 package guru.stefma.artifactorypublish
 
 import closureOf
-import com.sun.xml.fastinfoset.util.StringArray
 import org.gradle.api.Project
 import org.jfrog.gradle.plugin.artifactory.dsl.ArtifactoryPluginConvention
 import org.jfrog.gradle.plugin.artifactory.dsl.PublisherConfig
