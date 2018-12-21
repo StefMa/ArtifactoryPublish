@@ -26,15 +26,13 @@ repositories {
     jcenter()
 }
 
-val optionalPlugins by configurations.creating {
-    configurations["compileOnly"].extendsFrom(this)
-}
+val optionalPlugins by configurations.creating
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.8.1")
-    implementation("guru.stefma.androidartifacts:androidartifacts:1.3.0")
 
+    optionalPlugins("guru.stefma.androidartifacts:androidartifacts:1.3.0")
     optionalPlugins("com.android.tools.build:gradle:3.1.4")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")
