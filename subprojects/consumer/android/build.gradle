@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: guru.stefma.artifactorypublish.ArtifactoryPublishPlugin
+apply plugin: 'guru.stefma.artifactorypublish'
 
 android {
     compileSdkVersion = 26

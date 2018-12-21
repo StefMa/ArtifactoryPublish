@@ -23,7 +23,7 @@ The instance will be then available at [http://localhost:8081/artifactory/](http
 After you have successfully setup the Artifactory you can finally publish
 the library project by running:
 ```
-./gradlew build artifactoryPublish -PartifactoryUser=admin -PartifactoryKey=password
+./gradlew build artifactoryPublish --init-script init.gradle.kts -PartifactoryUser=admin -PartifactoryKey=password
 ```
 
 > **Note:** If you have already are installed Artifactory instance you have to use your user and your API-Key instead 

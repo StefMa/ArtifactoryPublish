@@ -1,0 +1,11 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:3.1.4")
+        classpath("guru.stefma.artifactorypublish:artifactorypublish:$rootProject.version")
+    }
+}

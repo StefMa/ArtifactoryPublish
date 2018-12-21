@@ -47,7 +47,7 @@ jobs:
           command: |
               cd subprojects/consumer
               echo "sdk.dir=$HOME/android-sdk" >> local.properties
-              ./gradlew build artifactoryPublish -PartifactoryUser=admin -PartifactoryKey=password --no-daemon
+              ./gradlew build artifactoryPublish --init-script init.gradle.kts -PartifactoryUser=admin -PartifactoryKey=password --no-daemon
 
 workflows:
   version: 2
