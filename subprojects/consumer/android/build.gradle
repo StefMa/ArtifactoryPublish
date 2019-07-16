@@ -1,5 +1,4 @@
 apply plugin: 'guru.stefma.artifactorypublish'
-apply plugin: 'guru.stefma.artifacts'
 apply plugin: 'com.android.library'
 
 android {

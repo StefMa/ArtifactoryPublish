@@ -68,30 +68,11 @@ class ArtifactoryPublishPluginTest(
     }
 
     @Test
-    fun `test apply plugin only does nothing`() {
-        File(javaProjectDir, "build.gradle").apply {
-            writeText("""
-                plugins {
-                    id 'guru.stefma.artifactorypublish'
-                }
-            """.trimIndent())
-        }
-        val result = GradleRunner.create()
-                .withProjectDir(javaProjectDir)
-                .withPluginClasspath()
-                .withArguments("tasks")
-                .build()
-
-        assertThat(result.output).doesNotContain("artifactoryPublish")
-    }
-
-    @Test
     fun `test apply plugin with artifacts plugin without java-library does nothing`() {
         File(javaProjectDir, "build.gradle").apply {
             writeText("""
                 plugins {
                     id 'guru.stefma.artifactorypublish'
-                    id 'guru.stefma.artifacts'
                 }
             """.trimIndent())
         }
@@ -101,7 +82,7 @@ class ArtifactoryPublishPluginTest(
                 .withArguments("tasks")
                 .build()
 
-        assertThat(result.output).doesNotContain("artifactoryPublish")
+        assertThat(result.output).contains("artifactoryPublish")
         assertThat(result.output).doesNotContain("androidArtifactJava")
     }
 
@@ -111,7 +92,6 @@ class ArtifactoryPublishPluginTest(
             writeText("""
                 plugins {
                     id 'guru.stefma.artifactorypublish'
-                    id 'guru.stefma.artifacts'
                     id 'java-library'
                 }
             """.trimIndent())
@@ -132,7 +112,6 @@ class ArtifactoryPublishPluginTest(
             writeText("""
                 plugins {
                     id 'guru.stefma.artifactorypublish'
-                    id 'guru.stefma.artifacts'
                     id 'com.android.library'
                 }
 
