@@ -33,7 +33,6 @@ class ProjectSetupExtension : BeforeEachCallback, AfterEachCallback, ParameterRe
                 """
                             plugins {
                                 id 'java-library'
-                                id 'guru.stefma.artifacts'
                                 id 'guru.stefma.artifactorypublish'
                             }
 
@@ -67,7 +66,6 @@ class ProjectSetupExtension : BeforeEachCallback, AfterEachCallback, ParameterRe
                 """
                             plugins {
                                 id 'com.android.library'
-                                id 'guru.stefma.artifacts'
                                 id 'guru.stefma.artifactorypublish'
                             }
 

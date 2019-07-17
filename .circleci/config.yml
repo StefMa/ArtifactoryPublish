@@ -20,9 +20,7 @@ jobs:
       - run: unzip -q sdk-tools-linux-3859397.zip
       - run: mkdir $HOME/android-sdk
       - run: mv tools $HOME/android-sdk/tools
-      - run: mkdir $HOME/android-sdk/licenses
-      - run: echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "$HOME/android-sdk/licenses/android-sdk-license"
-      - run: echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$HOME/android-sdk/licenses/android-sdk-preview-license"
+      - run: yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses || true
 
       # Try to restore cache (see ho to save cache below 👇)
       - restore_cache:
@@ -36,6 +34,7 @@ jobs:
           environment:
               ANDROID_HOME: "/home/circleci/android-sdk" # TODO: Try to don't hardcode me and use $HOME env variable
           command: ./gradlew test --no-daemon
+          no_output_timeout: 30m
 
       # Save the gradle folder for caching
       - save_cache:
@@ -48,6 +47,7 @@ jobs:
               cd subprojects/consumer
               echo "sdk.dir=$HOME/android-sdk" >> local.properties
               ./gradlew build artifactoryPublish --init-script init.gradle.kts -PartifactoryUser=admin -PartifactoryKey=password --no-daemon
+          no_output_timeout: 30m
 
 workflows:
   version: 2
