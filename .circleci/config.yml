@@ -20,9 +20,7 @@ jobs:
       - run: unzip -q sdk-tools-linux-3859397.zip
       - run: mkdir $HOME/android-sdk
       - run: mv tools $HOME/android-sdk/tools
-      - run: mkdir $HOME/android-sdk/licenses
-      - run: echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "$HOME/android-sdk/licenses/android-sdk-license"
-      - run: echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$HOME/android-sdk/licenses/android-sdk-preview-license"
+      - run: yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses || true
 
       # Try to restore cache (see ho to save cache below 👇)
       - restore_cache:
