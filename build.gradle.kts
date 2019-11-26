@@ -57,7 +57,7 @@ tasks.withType<PluginUnderTestMetadata> {
 }
 
 group = "guru.stefma.artifactorypublish"
-version = "1.2.0"
+version = "1.2.1"
 configure<PublishExtension> {
     userOrg = "stefma"
     artifactId = "artifactorypublish"
