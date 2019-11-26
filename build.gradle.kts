@@ -30,7 +30,7 @@ val optionalPlugins by configurations.creating
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.8.1")
+    implementation("org.jfrog.buildinfo:build-info-extractor-gradle:4.11.0")
     implementation("guru.stefma.androidartifacts:androidartifacts:1.4.0")
 
     optionalPlugins("com.android.tools.build:gradle:3.1.4")
