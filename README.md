@@ -31,8 +31,14 @@ apply plugin: "guru.stefma.artifactorypublish"
 
 version = "0.0.1"
 group = "guru.stefma.artifactorypublish"
+
+// For Java/Kotlin modules
+javaArtifact {
+    artifactId = "my-java-module"
+}
+// or for Android modules
 androidArtifact {
-    artifactId = "android"
+    artifactId = "my-android-module"
 }
 
 artifactoryPublish {
